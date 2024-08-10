@@ -40,7 +40,7 @@ console.log(obj.name);
 const textureloader = new THREE.TextureLoader();
 const matcaptexture = textureloader.load("/textures/matcaps/8.png")
 const boxtexture = textureloader.load("/textures/matcaps/1.png")
-
+const spheretexture = textureloader.load("/textures/matcaps/3.png")
 
 
 
@@ -93,7 +93,9 @@ const material = new THREE.MeshMatcapMaterial()//new THREE.MeshBasicMaterial()
 material.matcap = matcaptexture
 const boxmaterial =  new THREE.MeshMatcapMaterial()//new THREE.MeshBasicMaterial()
 boxmaterial.matcap = boxtexture
-const sphere = new THREE.Mesh(new THREE.SphereGeometry (0.5, 16, 16), material)
+const spherematerial = new THREE.MeshMatcapMaterial()//new THREE.MeshBasicMaterial()
+spherematerial.matcap = spheretexture
+const sphere = new THREE.Mesh(new THREE.SphereGeometry (0.5, 16, 16), spherematerial)
 const torus = new THREE.Mesh(new THREE.SphereGeometry (0.5, 16, 16), material)
 const box = new THREE.Mesh(new THREE.BoxGeometry (1, 1, 1), boxmaterial)
 torus.position.x = 1.5
