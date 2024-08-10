@@ -38,7 +38,8 @@ console.log(abc);
 console.log(string);
 console.log(obj.name);
 const textureloader = new THREE.TextureLoader();
-const matcaptexture = textureloader.load("/textures/matcaps/2.png")
+const matcaptexture = textureloader.load("/textures/matcaps/8.png")
+const boxtexture = textureloader.load("/textures/matcaps/1.png")
 
 
 
@@ -90,9 +91,11 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 const material = new THREE.MeshMatcapMaterial()//new THREE.MeshBasicMaterial()
 material.matcap = matcaptexture
+const boxmaterial =  new THREE.MeshMatcapMaterial()//new THREE.MeshBasicMaterial()
+boxmaterial.matcap = boxtexture
 const sphere = new THREE.Mesh(new THREE.SphereGeometry (0.5, 16, 16), material)
 const torus = new THREE.Mesh(new THREE.SphereGeometry (0.5, 16, 16), material)
-const box = new THREE.Mesh(new THREE.BoxGeometry (1, 1, 1), material)
+const box = new THREE.Mesh(new THREE.BoxGeometry (1, 1, 1), boxmaterial)
 torus.position.x = 1.5
 box.position.x = -1.5
 scene.add(sphere, torus, box)
@@ -131,9 +134,9 @@ const tick = () =>
     // sphere.scale.x = spherescaleanimation1
     // sphere.scale.y = spherescaleanimation1
     // sphere.scale.z = spherescaleanimation1
-    sphere.position.x = spherescaleanimation1//Math.cos(elapsedTime)
-    sphere.position.y = spherescaleanimation2//Math.sin(elapsedTime)
-    sphere.position.z = spherescaleanimation1//
+    //sphere.position.x = Math.sin(elapsedTime)//spherescaleanimation1
+    sphere.position.y = Math.sin(elapsedTime)//spherescaleanimation2
+    sphere.position.z = Math.cos(elapsedTime)//spherescaleanimation1
 
     // Render
     renderer.render(scene, camera)
